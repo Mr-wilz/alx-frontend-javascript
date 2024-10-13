@@ -1,11 +1,20 @@
-/* eslint-disable */
-export default function createInt8TypedArray(length, position, value) {
+function createInt8TypedArray(length, position, value) {
+  // Create a new ArrayBuffer with the given length
   const buffer = new ArrayBuffer(length);
-  const view = new DataView(buffer, 0);
+  // Create a DataView to manipulate the buffer
+  const view = new DataView(buffer);
 
-  if (position > length - 1) {
-    throw Error('Position outside range');
-  } else {
-    view.setInt8(position, value);
+  // Check if the position is within the bounds of the ArrayBuffer
+  if (position < 0 || position >= length) {
+    throw new Error('Position outside range');
   }
+
+  // Set the Int8 value at the specified position
+  view.setInt8(position, value);
+
+  // Return the DataView
   return view;
+}
+
+export default createInt8TypedArray;
+
