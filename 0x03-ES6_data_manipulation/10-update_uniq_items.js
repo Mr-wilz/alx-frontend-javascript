@@ -1,9 +1,10 @@
-const updateUniqueItems = (map) => {
-  if (!(map instanceof Map)) throw new Error('Cannot process');
+/* eslint-disable */
+export default function updateUniqueItems(groceriesMap) {
+  if (!(groceriesMap instanceof Map)) throw new Error("Cannot process");
 
-  map.forEach((value, key) => {
-    if (value === 1) map.set(key, 100);
+  groceriesMap.forEach((value, key) => {
+    if (value === 1) groceriesMap.set(key, 100);
   });
-};
 
-export default updateUniqueItems;
+  return groceriesMap;
+}
